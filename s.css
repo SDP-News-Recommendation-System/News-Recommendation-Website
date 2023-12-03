@@ -1,0 +1,181 @@
+body {
+    background-image: url('back.png');
+    background-size: cover; /* This property ensures that the background image covers the entire container */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+    /* You can also set other background properties like position and attachment if needed */
+}
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+
+nav, .nav-links {
+    display: flex;
+}
+
+nav {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-links {
+    gap: 3rem;
+    list-style: none;
+    font-size: 1.1rem;
+}
+
+.logo {
+    font-style: Calibri light;
+    font-weight: bolder;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;    
+    color: rgb(13, 107, 117);
+    font-size: 4rem; 
+}
+
+.logo img {
+    width: 140px; 
+    height: auto;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.checkbox-group {
+    font-style: Calibri light;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;   
+    color: rgb(9, 9, 8);
+    text-decoration-color: white;
+}
+
+a:hover {
+    color: rgb(113, 120, 248);
+    text-decoration: none;
+    text-underline-offset: 1rem;
+    text-decoration-color: rgb(33, 3, 104);
+}
+
+.search {
+    display: flex;
+    justify-content: flex-end; 
+    cursor: pointer;
+    outline: none;
+}
+
+.search input {
+    width: 130px;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-inline: 5px;
+}
+
+.search button {
+    width: 70px;
+    height: 30px;
+    background-color: rgb(0, 140, 255);
+    color: blue;
+    border-radius: 4px;
+    border: none;
+}
+
+.footer {
+    background-color: rgb(59, 57, 52);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    height: 10vh;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+}
+
+footer p {
+    font-style: Calibri light;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;  
+    color: rgb(9, 9, 8);
+    text-align: right;
+}
+
+.lang-menu {
+    width: 10%;
+    text-align: right;
+    position: relative;
+    bottom: 0;
+    left: 90%;
+}
+
+.lang-menu .selectedLang {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    line-height: 3; /* soz*/
+    height: 50px;
+    width: 100px;
+}
+
+.lang-menu .selectedLang:before {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url(https://flagsapi.com/GB/flat/32.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.lang-menu ul {
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #f8f8f8;
+    position: absolute;
+    top: 45px;
+    right: 0px;
+    width: 125px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.lang-menu ul li {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lang-menu ul li a {
+    text-decoration: none;
+    width: 125px;
+    display: block;
+    padding: 8px 10px;
+}
+
+.lang-menu ul li a:hover {
+    background-color: rgb(219, 230, 249);
+}
+
+.lang-menu ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.az:before {
+    background-image: url(https://flagsapi.com/AZ/flat/32.png);
+}
+
+
+.lang-menu:hover ul {
+    display: block;
+}
+
