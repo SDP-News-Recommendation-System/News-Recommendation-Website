@@ -1,6 +1,6 @@
-# Multilingual News Website README
+# Bilingual News Website README
 
-This repository contains the source code for a multilingual news website designed to display news articles in both English and Azerbaijani languages. The website fetches news from the News API for English articles and performs web scraping for Azerbaijani articles from popular Azerbaijani news websites such as apa.az, modern.az, and report.az.
+This repository contains the source code for a bilingual news website designed to display news articles in both English and Azerbaijani languages. The website fetches news from the News API for English articles and performs web scraping for Azerbaijani articles from popular Azerbaijani news websites such as apa.az, modern.az, and report.az.
 
 ## Features
 
