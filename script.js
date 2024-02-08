@@ -2,53 +2,36 @@ const apiKey = "4c1a01c57bb24da786855cca3bd3cb1c";
 const newsContainer = document.getElementById("newsContainer");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
-const categoryCheckboxes = document.querySelectorAll('.category-checkbox');
+const weatherInfoContainer = document.getElementById("weather-info");
 
-searchForm.addEventListener('submit', retrieve);
-
-function retrieve(e) {
-    e.preventDefault();
-
-    const selectedCategories = Array.from(categoryCheckboxes)
-        .filter((checkbox) => checkbox.checked)
-        .map((checkbox) => checkbox.value);
-
-    fetchAndDisplayNews(selectedCategories, searchInput.value);
-}
-
-const categories = {
-    sports: "https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=4c1a01c57bb24da786855cca3bd3cb1c",
-    business: "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=4c1a01c57bb24da786855cca3bd3cb1c",
-    entertainment: "https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=4c1a01c57bb24da786855cca3bd3cb1c",
-    technology: "https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=4c1a01c57bb24da786855cca3bd3cb1c",
-};
-
-categoryCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-        const selectedCategories = Array.from(categoryCheckboxes)
-            .filter((checkbox) => checkbox.checked)
-            .map((checkbox) => checkbox.value);
-
-        fetchAndDisplayNews(selectedCategories, searchInput.value);
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    fetchAndDisplayNews("https://newsapi.org/v2/top-headlines?country=us&apiKey=4c1a01c57bb24da786855cca3bd3cb1c");
 });
 
-async function fetchAndDisplayNews(selectedCategories, searchQuery = "") {
+searchForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const searchQuery = searchInput.value;
+    fetchAndDisplayNews(`https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${apiKey}`);
+});
+
+const categoryButtons = document.querySelectorAll('.category-button');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function () {
+           
+            categoryButtons.forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+
+            const selectedCategory = this.value;
+
+         const categoryURL = `https://newsapi.org/v2/top-headlines?country=us&category=${selectedCategory}&apiKey=${apiKey}`;
+            fetchAndDisplayNews(categoryURL);
+        });
+    });
+
+async function fetchAndDisplayNews(url) {
     newsContainer.innerHTML = "";
 
-    if (searchQuery !== '') {
-
-        const searchURL = `https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${apiKey}`;
-        fetchNewsForCategory(searchURL);
-    }
-
-    selectedCategories.forEach((category) => {
-        const categoryURL = categories[category];
-        fetchNewsForCategory(categoryURL);
-    });
-}
-
-async function fetchNewsForCategory(url) {
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -81,10 +64,43 @@ async function fetchNewsForCategory(url) {
                 newsContainer.appendChild(newsItem);
             });
         } else {
-            newsContainer.innerHTML += `<p>No information available for this category.</p>`;
+            newsContainer.innerHTML += `<p>No information available.</p>`;
         }
     } catch (error) {
         console.error("ERROR", error);
         newsContainer.innerHTML += "<p>ERROR</p>";
     }
+}
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        const weatherApiKey = "6cb14eb6b45ff7cc4444402f801c7f9c";
+        const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}`;
+
+        try {
+            const weatherResponse = await fetch(weatherApiUrl);
+            const weatherData = await weatherResponse.json();
+
+            // Update the UI with weather information
+            updateWeatherUI(weatherData);
+        } catch (error) {
+            console.error("Weather API Error", error);
+            weatherInfoContainer.innerHTML = "<p>Unable to fetch weather information.</p>";
+        }
+    });
+} else {
+    weatherInfoContainer.innerHTML = "<p>Geolocation is not supported by your browser.</p>";
+}
+
+function updateWeatherUI(weatherData) {
+    const weatherDescription = weatherData.weather[0].description;
+    const temperature = Math.round(weatherData.main.temp - 273.15); // Convert temperature to Celsius
+
+    const weatherInfoHTML = `
+        <p>Weather: ${weatherDescription}</p>
+        <p>Temperature: ${temperature}°C</p>
+    `;
+
+    weatherInfoContainer.innerHTML = weatherInfoHTML;
 }

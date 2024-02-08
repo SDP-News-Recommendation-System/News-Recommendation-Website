@@ -46,12 +46,14 @@ nav {
     cursor: pointer;
 }
 
-.categoryButtons {
+.checkbox-group {
+    
     font-style: Calibri light;
     font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;    
     color: rgb(255, 255, 255);
     text-decoration-color: white;
     gap: 3rem;
+
 }
 
 a:hover {
@@ -68,7 +70,7 @@ a:hover {
     outline: none;
 }
 
-.search input {
+.searchInputField{
     width: 150px;
     padding: 4px;
     font-size: 13px;
@@ -76,6 +78,8 @@ a:hover {
     border-radius: 30px;
     margin-inline: 2px;
 }
+
+
 
 .lang-menu {
     width: 10%;
@@ -89,7 +93,7 @@ a:hover {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    line-height: 3; 
+    line-height: 3; /* soz*/
     height: 50px;
     width: 100px;
 }
@@ -99,7 +103,7 @@ a:hover {
     display: inline-block;
     width: 50px;
     height: 50px;
-    background-image: url(https://flagsapi.com/GB/flat/32.png);
+    background-image: url(https://flagsapi.com/AZ/flat/32.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -113,9 +117,9 @@ a:hover {
     border: 1px solid #f8f8f8;
     position: absolute;
     top: 45px;
-    right: 10px;
+    right: 0px;
     width: 125px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -149,68 +153,12 @@ a:hover {
 }
 
 .az:before {
-    background-image: url(https://flagsapi.com/AZ/flat/32.png);
+    background-image: url(https://flagsapi.com/GB/flat/32.png);
 }
 .lang-menu:hover ul {
     display: block;
 }
 
-
-
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.news-item {
-    height: 500px;
-    flex: 0 0 calc(48% - 10px); 
-    background-color: #ffffff;
-    border-radius: 9px;
-    margin-bottom: 20px;
-    display: flex; 
-    flex-direction: column; 
-    padding-right: 10px;
-}
-
-.news-item-inner {
-    flex: 1; 
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-.news-item h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    line-height: 1;
-}
-
-.news-image {
-    max-width: 100%;
-    height: 250px; 
-    align-self:auto; 
-    padding-left: 15px;
-    
-}
-
-.news-item p {
-    font-size: 1rem;
-    line-height: 1;
-    color: #7d7878;
-    margin-bottom: 2px;
-}
-
-.news-item a {
-    display: block;
-    color: #16181a;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
 
 
 
@@ -266,3 +214,60 @@ a:hover {
     margin: 0;
 }
 
+
+
+
+
+
+
+#newsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.newsItem {
+    height: 500px;
+    flex: 0 0 calc(48% - 10px);
+    background-color: #ffffff;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 100px;
+}
+
+.groupName{
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-item h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.news-image {
+    max-width: 100%;
+    height: 250px;
+    align-self: auto;
+    padding-left: 15px;
+}
+
+.news-item p {
+    font-size: 1rem;
+    line-height: 1;
+    color: #555;
+    margin-bottom: 2px;
+}
+
+.news-item a {
+    display: block;
+    color: #545b63;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}

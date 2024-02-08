@@ -7,15 +7,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<header>
-    <h1>Latest News</h1>
+<header>  
+    <div class="lang-menu">
+        <div class="selectedLang">
+            <a href="local.html" class="az">AZE</a>
+        </div>
+        <ul>
+            <li>
+                <a href="index.html" class="az">ENG</a> 
+            </li>
+        </ul>
+    </div>
+    <nav id="desktop-nav">
+        <div>
+            <ul class="nav-links">
+                <li><a href="haqqimizda.html" target="_blank">Haqqımızda </a></li>
+                <label></label>
+                <li><a href="elaq.html" target="_blank">.   Bizimlə Əlaqə </a></li>
+            </ul>
+        </div>
+        <div class="logo"><img src="news.jpg" alt="News Icon"> Son Xəbərlər</div>
+        <nav>
+            <div id="categoryButtons">
+                <label></label>  
+            </div>
+        </nav>
+        <div class="head">
+            <form class="search" id="searchInput" action="">
+                <input type="text" id="searchInputField" placeholder="Açar sözlə axtarın">
+                <button onclick="searchNews(event)">Axtar</button>
+            </form>
+        </div>
+    </nav>
+    <div class="weather-widget">
+        <h2>Bakıda hava</h2>
+        <div id="weather-info"></div>
+    </div>
 </header>
-
 <div id="newsContainer">
     <div class="loading" id="loadingMessage">Loading...</div>
 </div>
 <script src="script2.js"></script>
-
 </body>
 </html>
