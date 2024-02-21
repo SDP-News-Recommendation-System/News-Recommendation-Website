@@ -11,8 +11,32 @@ const searchInput = document.getElementById("search-input");
 // Get reference to the weather info container
 const weatherInfoContainer = document.getElementById("weather-info");
 
+// Get reference to the apply filter button
+const applyFilterButton = document.getElementById("apply-filter-button");
+
+// Event listener for applying filter
+applyFilterButton.addEventListener('click', function () {
+    const locationFilterValue = document.getElementById("location-filter").value;
+    const topicFilterValue = document.getElementById("topic-filter").value;
+
+    let apiUrl = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey;
+
+    // Append location filter to API URL if selected
+    if (locationFilterValue) {
+        apiUrl += `&q=${locationFilterValue}`;
+    }
+
+    // Append topic filter to API URL if selected
+    if (topicFilterValue) {
+        apiUrl += `&category=${topicFilterValue}`;
+    }
+
+    // Fetch and display news based on filters
+    fetchAndDisplayNews(apiUrl, topicFilterValue);
+});
+
 // Function to fetch and display news
-async function fetchAndDisplayNews(url) {
+async function fetchAndDisplayNews(url, category) {
     // Clear the existing news container
     newsContainer.innerHTML = "";
 
@@ -36,18 +60,34 @@ async function fetchAndDisplayNews(url) {
                 const title = document.createElement("h2");
                 title.textContent = article.title;
 
-                // Inside the forEach loop where you create the image element
+                // Create image element
                 const image = document.createElement("img");
-                // Check if the article has a valid image URL, if not, use a default image
+                // Check if the article has a valid image URL, if not, use a default image based on category
                 if (article.urlToImage && article.urlToImage !== "null" && article.urlToImage !== null) {
                     image.src = article.urlToImage;
                 } else {
-                 // Provide a default image URL here
-                    image.src = "default_image.jpg"; 
+                    // Use default image based on category
+                    switch (category) {
+                        case "sports":
+                            image.src = "s1.jpeg";
+                            break;
+                        case "business":
+                            image.src = "b1.jpeg";
+                            break;
+                        case "entertainment":
+                            image.src = "e1.jpeg";
+                            break;
+                        case "technology":
+                            image.src = "t1.jpeg";
+                            break;
+                        default:
+                            // Use a default image for other categories
+                            image.src = "default_image.jpeg";
+                            break;
+                    }
                 }
                 image.alt = "News Image";
                 image.classList.add("news-image");
-
 
                 // Create description element
                 const description = document.createElement("p");
@@ -82,7 +122,7 @@ async function fetchAndDisplayNews(url) {
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const searchQuery = searchInput.value;
-    fetchAndDisplayNews(`https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${apiKey}`);
+    fetchAndDisplayNews(`https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=${apiKey}`, "general");
 });
 
 // Function to update weather information in the UI
@@ -100,7 +140,7 @@ function updateWeatherUI(weatherData) {
 
 // Function to handle category filtering
 function filterByCategory(category) {
-    fetchAndDisplayNews(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`);
+    fetchAndDisplayNews(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`, category);
 }
 
 // Attach click event listeners to category buttons
@@ -140,5 +180,6 @@ if (navigator.geolocation) {
 
 // Initial fetch of news when the page loads
 document.addEventListener('DOMContentLoaded', function () {
-    fetchAndDisplayNews("https://newsapi.org/v2/top-headlines?country=us&apiKey=4c1a01c57bb24da786855cca3bd3cb1c");
+    fetchAndDisplayNews("https://newsapi.org/v2/top-headlines?country=us&apiKey=4c1a01c57bb24da786855cca3bd3cb1c", "general");
 });
+

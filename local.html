@@ -8,6 +8,9 @@
 </head>
 <body>
 <header>  
+    <div class="login-link">
+        <a href="login.html">Daxil Ol</a>
+    </div>
     <div class="lang-menu">
         <div class="selectedLang">
             <a href="local.html" class="az">AZE</a>
@@ -21,9 +24,9 @@
     <nav id="desktop-nav">
         <div>
             <ul class="nav-links">
-                <li><a href="haqqimizda.html" target="_blank">Haqqımızda </a></li>
+                <li><a href="haqqimizda.html" target="_blank">Haqqımızda .</a></li>
                 <label></label>
-                <li><a href="elaqe.html" target="_blank">.   Bizimlə Əlaqə </a></li>
+                <li><a href="elaqe.html" target="_blank">. Bizimlə Əlaqə </a></li>
             </ul>
         </div>
         <div class="logo"><img src="news.jpg" alt="News Icon"> Son Xəbərlər</div>
@@ -31,22 +34,74 @@
             <div id="categoryButtons">
                 <label></label>  
             </div>
+            <div class="news-filter">
+                <label>Filtrlə:</label>
+                <select id="location-filter">
+                    <option value="">Yer Seçin</option>
+                    <option value="new york">New York</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="london">London</option>
+                    <option value="india">Hindistan</option>
+                </select>
+                <select id="topic-filter">
+                    <option value="">Mövzu Seçin</option>
+                    <option value="health">Sağlamlıq</option>
+                    <option value="science">Elm</option>
+                    <option value="education">Təhsil</option>
+                    <option value="lifestyle">Həyat Tərzləri</option>
+                </select>
+                <button id="apply-filter-button" type="button">Tətbiq et</button>
+            </div>
+            
         </nav>
+        
         <div class="head">
             <form class="search" id="searchInput" action="">
                 <input type="text" id="searchInputField" placeholder="Açar sözlə axtarın">
                 <button onclick="searchNews(event)">Axtar</button>
             </form>
+        
         </div>
+
+        
     </nav>
     <div class="weather-widget">
         <h2>Bakıda hava</h2>
         <div id="weather-info"></div>
     </div>
 </header>
-<div id="newsContainer">
-    <div class="loading" id="loadingMessage">Loading...</div>
+
+<div class="container" id="newsContainer"></div>
+<div class="loading" id="loadingMessage">Loading...</div>
 </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+
+<body>
+<footer>
+<div class="footer">
+<div class="row">
+<a href="#"><i class="fa fa-facebook"></i></a>
+<a href="#"><i class="fa fa-instagram"></i></a>
+<a href="#"><i class="fa fa-twitter"></i></a>
+</div>
+
+<div class="row">
+<ul>
+<li><a href="#">Əlaqə</a></li>
+<li><a href="#">Dəstək xidməti</a></li>
+<li><a href="#">Gizlilik</a></li>
+</ul>
+</div>
+
+<div class="row">
+© Son Xəbərlər - Müəllif hüquqları qorunur.
+</div>
+</div>
+</footer>
 <script src="script2.js"></script>
 </body>
 </html>

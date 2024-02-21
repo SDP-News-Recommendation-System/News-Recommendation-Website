@@ -60,7 +60,7 @@ a:hover {
     color: rgb(113, 120, 248);
     text-decoration: none;
     text-underline-offset: 1rem;
-    text-decoration-color: rgb(33, 3, 104);
+    text-decoration-color: rgb(211, 209, 215);
 }
 
 .search {
@@ -158,10 +158,6 @@ a:hover {
 .lang-menu:hover ul {
     display: block;
 }
-
-
-
-
 .weather-widget {
     background-color: #ffffff;
     border-radius: 10px;
@@ -182,72 +178,35 @@ a:hover {
     color: #555;
 }
 
-
-#weather-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-
-#temperature {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-
-#weather-description {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-}
-
-
-.weather-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.weather-details p {
-    font-size: 1.2rem;
-    margin: 0;
-}
-
-
-
-
-
-
-
-#newsContainer {
+.container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: space-between;
 }
 
-.newsItem {
-    height: 500px;
-    flex: 0 0 calc(48% - 10px);
+.news-item {
+    height: auto; /* Adjusted to allow variable height */
+    flex: 0 0 calc(30% - 10px); /* Adjusted to fit two columns */
     background-color: #ffffff;
     border-radius: 9px;
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    padding-right: 100px;
+    padding-right: 10px;
 }
 
-.groupName{
+.news-item-inner {
     flex: 1;
     padding: 15px;
     display: flex;
     flex-direction: column;
 }
 
-.news-item h3 {
-    font-size: 1rem;
+.news-item h2 {
+    font-size: 1.5rem;
     margin-bottom: 10px;
+    line-height: 1;
 }
 
 .news-image {
@@ -260,14 +219,150 @@ a:hover {
 .news-item p {
     font-size: 1rem;
     line-height: 1;
-    color: #555;
+    color: #7d7878;
     margin-bottom: 2px;
 }
 
 .news-item a {
     display: block;
-    color: #545b63;
+    color: #16181a;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
+}
+
+body{
+    margin:0;
+    overflow-x:hidden;
+    }
+    
+    .footer{
+    background:#000;
+    padding:30px 0px;
+    font-family: 'Play', sans-serif;
+    text-align:center;
+    }
+    
+    .footer .row{
+    width:100%;
+    margin:1% 0%;
+    padding:0.6% 0%;
+    color:gray;
+    font-size:0.8em;
+    }
+    
+    .footer .row a{
+    text-decoration:none;
+    color:gray;
+    transition:0.5s;
+    }
+    
+    .footer .row a:hover{
+    color:#fff;
+    }
+    
+    .footer .row ul{
+    width:100%;
+    }
+    
+    .footer .row ul li{
+    display:inline-block;
+    margin:0px 30px;
+    }
+    
+    .footer .row a i{
+    font-size:2em;
+    margin:0% 1%;
+    }
+    
+    @media (max-width:720px){
+    .footer{
+    text-align:left;
+    padding:5%;
+    }
+    .footer .row ul li{
+    display:block;
+    margin:10px 0px;
+    text-align:left;
+    }
+    .footer .row a i{
+    margin:0% 3%;
+    }
+    }
+
+
+    /*weather widget box*/
+.weather-widget {
+    margin: 0.5cm;
+    background-color: #e9e6dc;
+    border-radius: 1px;
+    padding: 20px;
+    width: 94%; 
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px; 
+}
+
+.weather-widget h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+#weather-info {
+    font-size: 1.4rem;
+    color: #555;
+}
+
+
+.category-filter,
+.news-filter {
+    display: flex;
+    align-items: center;
+}
+
+.category-filter label,
+.news-filter label {
+    margin-right: 10px;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.category-button {
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.category-button:hover {
+    background-color: #c1af9d;
+}
+
+#location-filter,
+#topic-filter {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 1rem;
+}
+
+#apply-filter-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+#apply-filter-button:hover {
+    background-color: #f8f5f1;
 }

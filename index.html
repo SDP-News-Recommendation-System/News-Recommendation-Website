@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="s.css">
 </head>
 <body>
+    <div class="login-link">
+        <a href="login.html">Login</a>
+        <title>Login</title>
+        <a href="register.html">Register</a>
+        <title>Registration</title>
+  
+    </div>
     <div class="lang-menu">
         <div class="selectedLang">
             ENG
@@ -20,8 +27,8 @@
     <nav id="desktop-nav">
         <div>
             <ul class="nav-links">
-                <li><a href="aboutus.html" target="_blank">About Us</a></li>
-                <li><a href="contactus.html" target="_blank">.  Contact Us</a></li>
+                <li><a href="aboutus.html" target="_blank">About Us .</a></li>
+                <li><a href="contactus.html" target="_blank">. Contact Us</a></li>
             </ul>
         </div>
         <div class="logo"><img src="news.jpg" alt="News Icon"> News</div>
@@ -37,6 +44,25 @@
                         <button type="button" class="category-button" value="technology">Technology</button>
                     </div>
                 </div>
+                <div class="news-filter">
+                    <label>Filter by:</label>
+                    <select id="location-filter">
+                        <option value="">Select Location</option>
+                        <option value="new york">New York</option>
+                        <option value="tokyo">Tokyo</option>
+                        <option value="london">London</option>
+                        <option value="india">India</option>
+                    </select>
+                    <select id="topic-filter">
+                        <option value="">Select Topic</option>
+                        <option value="health">Health</option>
+                        <option value="science">Science</option>
+                        <option value="education">Education</option>
+                        <option value="lifestyle">Lifestyle</option>
+                    </select>
+                    <button id="apply-filter-button" type="button">Apply</button>
+                </div>
+
             </div>
         </nav>
         <div class="head">
@@ -47,15 +73,52 @@
         </div>
     </nav>
 
-    <div class="weather-widget">
-        <h2>Current Weather</h2>
-        <div id="weather-info"></div>
+
+    <!--weather-widget-->
+    <div class="weather-widget" >
+        
+        <h2>Current Weather </h2>         
+
+        <div id="weather-info">
+        </div>
+
+    
+        
     </div>
 
     <div class="container" id="newsContainer"></div>
 
-    <footer></footer>
+    <!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+
+<body>
+<footer>
+<div class="footer">
+<div class="row">
+<a href="#"><i class="fa fa-facebook"></i></a>
+<a href="#"><i class="fa fa-instagram"></i></a>
+<a href="#"><i class="fa fa-twitter"></i></a>
+</div>
+
+<div class="row">
+<ul>
+<li><a href="#">Contact us</a></li>
+<li><a href="#">Our Services</a></li>
+<li><a href="#">Privacy Policy</a></li>
+</ul>
+</div>
+
+<div class="row">
+Copyright © 2024 NEWS - All rights reserved 
+</div>
+</div>
+</footer>
     <script src="script.js"></script>
+
+
 </body>
 </html>
