@@ -5,82 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Feed</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
-<body>
-<header>  
-    <div class="login-link">
-        <a href="login.html">Daxil Ol</a>
-    </div>
-    <div class="lang-menu">
-        <div class="selectedLang">
-            <a href="local.html" class="az">AZE</a>
-        </div>
-        <ul>
-            <li>
-                <a href="index.html" class="az">ENG</a> 
+<body> 
+    <header>
+        <div class="header">
+            <div class="top">
+                <ul>
+                    <img class="logo" src="N.JPG" alt="Logo">
+                    <li><a href="local.html">Ana Səhifə</a></li> <!-- Added Home Page Button -->
+                    <li><a href="haqqimizda.html" target="_blank">Haqqımızda</a></li>
+                    <li><a href="elaqe.html" target="_blank">Bizimlə Əlaqə </a></li>
+                   <li>
+                    <div class="lang-menu">
+                        <div class="selectedLang">AZE </div>
+                        <ul>
+                            <li><a href="index.html" class="eng">ENG</a></li>
+                    </ul>
+            </div>
+        </li>
+        <li>
+            <div class="head">
+                <form id="search-form" class="search" action="">
+                    <div class="search-container">
+                        <input id="search-input" type="text" placeholder=" Axtar...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>   
             </li>
         </ul>
     </div>
+</header>
+
     <nav id="desktop-nav">
-        <div>
-            <ul class="nav-links">
-                <li><a href="haqqimizda.html" target="_blank">Haqqımızda .</a></li>
-                <label></label>
-                <li><a href="elaqe.html" target="_blank">. Bizimlə Əlaqə </a></li>
-            </ul>
-        </div>
-        <div class="logo"><img src="news.jpg" alt="News Icon"> Son Xəbərlər</div>
+   
+        <div class="logo"><img src="INN.png" alt="News Icon"></div>
         <nav>
-            <div id="categoryButtons">
-                <label></label>  
-            </div>
             <div class="news-filter">
-                <label>Filtrlə:</label>
-                <select id="location-filter">
-                    <option value="">Yer Seçin</option>
-                    <option value="new york">New York</option>
-                    <option value="tokyo">Tokyo</option>
-                    <option value="london">London</option>
-                    <option value="india">Hindistan</option>
+                <select id="source-filter">
+                    <option value="">Xəbərləri çeşidlə</option>
+                    <option value="apa.az">apa.az</option>
+                    <option value="modern.az">modern.az</option>
+                    <option value="moderator.az">moderator.az</option>
+                    <option value="sumqayitxeber.com">sumqayitxeber.com</option>
                 </select>
-                <select id="topic-filter">
-                    <option value="">Mövzu Seçin</option>
-                    <option value="health">Sağlamlıq</option>
-                    <option value="science">Elm</option>
-                    <option value="education">Təhsil</option>
-                    <option value="lifestyle">Həyat Tərzləri</option>
-                </select>
-                <button id="apply-filter-button" type="button">Tətbiq et</button>
+                <div class="weather-widget">
+                <div id="weather-info"></div>
+            </div>                
             </div>
-            
-        </nav>
-        
-        <div class="head">
-            <form class="search" id="searchInput" action="">
-                <input type="text" id="searchInputField" placeholder="Açar sözlə axtarın">
-                <button onclick="searchNews(event)">Axtar</button>
-            </form>
-        
+           
+        </nav>  
+    </nav>
+   
+    <nav>
+        <div class="filter">  
+            <div class="category-buttons">
+                <button type="button" class="category-button" value="Dünya"><img src="dunya.jpg" alt="Dünya">
+                    <span class="button-text">Dünya</span></button>
+                <button type="button" class="category-button" value="Mədəniyyət"><img src="medeniyyet.jpg" alt="Mədəniyyət">
+                    <span class="button-text">Mədəniyyət</span></button>
+                <button type="button" class="category-button" value="Sənaye"><img src="senaye.jpg" alt="Sənaye">
+                    <span class="button-text">Sənaye</span></button>
+                <button type="button" class="category-button" value="İdman"><img src="idman.jpg" alt="İdman">
+                    <span class="button-text">İdman</span></button>
+                
+             </div>
+        </div>
+    </nav>
+
+        <div class="date-range-widget">
+            <input type="text" id="date-range" placeholder="Tarix Aralığı Seçin">
         </div>
 
-        
-    </nav>
-    <div class="weather-widget">
-        <h2>Bakıda hava</h2>
-        <div id="weather-info"></div>
-    </div>
-</header>
+
 
 <div class="container" id="newsContainer"></div>
 <div class="loading" id="loadingMessage">Loading...</div>
-</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+<!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--GOOGLE FONTS-->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
 
-<body>
+<div class="center-image">
+    <img src="INN.png"></div>
 <footer>
 <div class="footer">
 <div class="row">
@@ -97,11 +109,11 @@
 </ul>
 </div>
 
-<div class="row">
-© Son Xəbərlər - Müəllif hüquqları qorunur.
-</div>
+<div class="row">© Son Xəbərlər - Müəllif hüquqları qorunur.</div>
 </div>
 </footer>
+<!-- Flatpickr JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="script2.js"></script>
 </body>
 </html>

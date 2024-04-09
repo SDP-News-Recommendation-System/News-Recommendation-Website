@@ -11,30 +11,198 @@ const searchInput = document.getElementById("search-input");
 // Get reference to the weather info container
 const weatherInfoContainer = document.getElementById("weather-info");
 
-// Get reference to the apply filter button
-const applyFilterButton = document.getElementById("apply-filter-button");
+const customSelect = document.querySelector(".custom-select");
+const topicSelect = document.querySelector(".topic-select");
 
-// Event listener for applying filter
-applyFilterButton.addEventListener('click', function () {
-    const locationFilterValue = document.getElementById("location-filter").value;
-    const topicFilterValue = document.getElementById("topic-filter").value;
+const selectBtn = document.querySelector(".select-button");
+const selectBtn1 = document.querySelector(".sel-button");
 
-    let apiUrl = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey;
+const selectedValue = document.querySelector(".selected-value");
+const selectedValue1 = document.querySelector(".sel-value");
 
-    // Append location filter to API URL if selected
-    if (locationFilterValue) {
-        apiUrl += `&q=${locationFilterValue}`;
+const optionsList = document.querySelectorAll(".select-dropdown li");
+const optionsList1 = document.querySelectorAll(".topic-dropdown li");
+
+
+// add click event to select button
+selectBtn.addEventListener("click", () => {
+  // add/remove active class on the container element
+  customSelect.classList.toggle("active");
+
+  // update the aria-expanded attribute based on the current state
+  selectBtn.setAttribute("aria-expanded",
+    selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+  );
+});
+// add click event to select button
+selectBtn1.addEventListener("click", () => {
+    // add/remove active class on the container element
+    topicSelect.classList.toggle("active");
+  
+    // update the aria-expanded attribute based on the current state
+    selectBtn1.setAttribute("aria-expanded",
+      selectBtn1.getAttribute("aria-expanded") === "true" ? "false" : "true"
+    );
+  });
+
+optionsList.forEach((option) => {
+  function handler(e) {
+    // Click Events
+    if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+      selectedValue.textContent = this.children[1].textContent;
+      customSelect.classList.remove("active");
     }
-
-    // Append topic filter to API URL if selected
-    if (topicFilterValue) {
-        apiUrl += `&category=${topicFilterValue}`;
+    // Key Events
+    if (e.key === "Enter") {
+      selectedValue.textContent = this.textContent;
+      customSelect.classList.remove("active");
     }
+  }
 
-    // Fetch and display news based on filters
-    fetchAndDisplayNews(apiUrl, topicFilterValue);
+  option.addEventListener("keyup", handler);
+  option.addEventListener("click", handler);
 });
 
+optionsList1.forEach((option) => {
+    function handler(e) {
+      // Click Events
+      if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+        selectedValue1.textContent = this.children[1].textContent;
+        topicSelect.classList.remove("active");
+      }
+      // Key Events
+      if (e.key === "Enter") {
+        selectedValue1.textContent = this.textContent;
+        topicSelect.classList.remove("active");
+      }
+    }
+  
+    option.addEventListener("keyup", handler);
+    option.addEventListener("click", handler);
+  });
+// OUTSIDE BOX  Add mousedown event listener to the document
+document.addEventListener("mousedown", function (event) {
+    // Check if the clicked element is the select button or select dropdown
+    const isSelectButton = event.target.closest(".select-button");
+    const isSelectDropdown = event.target.closest(".select-dropdown");
+
+    // Check if the clicked element is outside the custom select
+    const isOutsideCustomSelect = !event.target.closest(".custom-select");
+    // If the clicked element is outside the custom select, close all active select boxes
+    if (isOutsideCustomSelect) {
+        customSelect.classList.remove("active");
+
+        // Update the aria-expanded attribute of the select button
+        selectBtn.setAttribute("aria-expanded", "false");
+    }
+});
+document.addEventListener("mousedown", function (event) {
+    // Check if the clicked element is the select button or select dropdown
+    const isSelectButton1 = event.target.closest(".sel-button");
+    const isSelectDropdown1 = event.target.closest(".topic-dropdown");
+
+    // Check if the clicked element is outside the custom select
+    const isOutsideTopicSelect = !event.target.closest(".topic-select");
+    // If the clicked element is outside the custom select, close all active select boxes
+
+    if (isOutsideTopicSelect) {
+        topicSelect.classList.remove("active");
+
+        // Update the aria-expanded attribute of the select button
+        selectBtn1.setAttribute("aria-expanded", "false");
+    }
+});
+
+
+// HOVER     Add mouseenter event listener to the select button
+selectBtn.addEventListener("mouseenter", () => {
+    // Add active class to the custom select
+    customSelect.classList.add("active");
+    // Update the aria-expanded attribute of the select button
+    selectBtn.setAttribute("aria-expanded", "true");
+});
+
+selectBtn1.addEventListener("mouseenter", () => {
+    // Add active class to the custom select
+    topicSelect.classList.add("active");
+    // Update the aria-expanded attribute of the select button
+    selectBtn1.setAttribute("aria-expanded", "true");
+});
+
+// Add mouseleave event listener to the custom select
+customSelect.addEventListener("mouseleave", () => {
+    // Remove active class from the custom select
+    customSelect.classList.remove("active");
+
+    // Update the aria-expanded attribute of the select button
+    selectBtn.setAttribute("aria-expanded", "false");
+});
+topicSelect.addEventListener("mouseleave", () => {
+    // Remove active class from the custom select
+    topicSelect.classList.remove("active");
+
+    // Update the aria-expanded attribute of the select button
+    selectBtn1.setAttribute("aria-expanded", "false");
+});
+
+
+// Event listener for location selection
+optionsList.forEach((option) => {
+    option.addEventListener("click", function () {
+        const location = this.children[1].textContent.toLowerCase();
+        fetchNewsByLocation(location);
+    });
+});
+optionsList1.forEach((option) => {
+    option.addEventListener("click", function () {
+        const topic = this.children[1].textContent.toLowerCase();
+        fetchNewsByTopic(topic);
+    });
+});
+
+// Function to fetch news based on location
+async function fetchNewsByLocation(location) {
+    try {
+        // Construct the API URL based on the selected location
+        let apiUrl = `https://newsapi.org/v2/top-headlines?q=${location}&apiKey=${apiKey}`;
+
+        // Fetch and display news based on the selected location
+        await fetchAndDisplayNews(apiUrl, "general");
+    } catch (error) {
+        // Handle errors
+        console.error("ERROR", error);
+        newsContainer.innerHTML = "<p>ERROR</p>";
+    }
+}
+// Function to fetch news based on location
+async function fetchNewsByTopic(topic) {
+    try {
+        // Construct the API URL based on the selected location
+        let apiUrl = `https://newsapi.org/v2/top-headlines?q=${topic}&apiKey=${apiKey}`;
+
+        // Fetch and display news based on the selected location
+        await fetchAndDisplayNews(apiUrl, "general");
+    } catch (error) {
+        // Handle errors
+        console.error("ERROR", error);
+        newsContainer.innerHTML = "<p>ERROR</p>";
+    }
+}
+
+
+// Function to truncate description text
+function truncateDescription(description, maxLength) {
+    if (description.length > maxLength) {
+        return description.slice(0, maxLength) + "...";
+    }
+    return description;
+}
+function truncateTitle(title, maxLength) {
+    if (title.length > maxLength) {
+        return title.slice(0, maxLength) + "...";
+    }
+    return title;
+}
 // Function to fetch and display news
 async function fetchAndDisplayNews(url, category) {
     // Clear the existing news container
@@ -58,7 +226,7 @@ async function fetchAndDisplayNews(url, category) {
 
                 // Create title element
                 const title = document.createElement("h2");
-                title.textContent = article.title;
+                title.textContent = truncateTitle(article.title, 70);
 
                 // Create image element
                 const image = document.createElement("img");
@@ -91,12 +259,13 @@ async function fetchAndDisplayNews(url, category) {
 
                 // Create description element
                 const description = document.createElement("p");
-                description.textContent = article.description;
+                // Truncate description if it exceeds 50 characters
+                description.textContent = truncateDescription(article.description, 100);
 
                 // Create a link element to the original article
                 const link = document.createElement("a");
                 link.href = article.url;
-                link.textContent = "For more, please click here";
+                link.textContent = "For more, please click here...";
 
                 // Append elements to the news item container
                 newsItem.appendChild(title);
@@ -113,7 +282,7 @@ async function fetchAndDisplayNews(url, category) {
         }
     } catch (error) {
         // Handle errors
-        console.error("ERROR", error);
+        console.error("", error);
         newsContainer.innerHTML += "<p>ERROR</p>";
     }
 }
@@ -130,19 +299,52 @@ function updateWeatherUI(weatherData) {
     const weatherDescription = weatherData.weather[0].description;
     const temperature = Math.round(weatherData.main.temp - 273.15); // Convert temperature to Celsius
 
-    const weatherInfoHTML = `
-        <p>Weather: ${weatherDescription}</p>
-        <p>Temperature: ${temperature}°C</p>
+    const weatherIcon = getWeatherIcon(weatherDescription);
+
+    const weatherInfoHTML = ` 
+    <div class="weather-icon">${weatherIcon}</div>
+    <p>${weatherDescription} - ${temperature}°C</p>
+       
     `;
 
     weatherInfoContainer.innerHTML = weatherInfoHTML;
 }
 
-// Function to handle category filtering
-function filterByCategory(category) {
-    fetchAndDisplayNews(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`, category);
+// Function to get weather icon based on weather description
+function getWeatherIcon(description) {
+    let icon = "";
+    if (description.includes("sun") || description.includes("clear")) {
+        icon = "<img src='sun.png' alt='Sun' class='weather-icon'>";
+    } else if (description.includes("cloud")) {
+        icon = "<img src='broken.png' alt='Broken' class='weather-icon'>";
+    }else if (description.includes("cloud")) {
+        icon = "<img src='cloud.png' alt='Cloud' class='weather-icon'>";
+    } else if (description.includes("rain")) {
+        icon = "<img src='rain.png' alt='Rain' class='weather-icon'>";
+    } else if (description.includes("cloud")) {
+        icon = "<img src='snowy.png' alt='Snowy' class='weather-icon'>";
+    } else if (description.includes("storm") || description.includes("thunder")) {
+        icon = "<img src='storm.png' alt='Storm' class='weather-icon'>";
+    } else {
+        icon = "<img src='default.png' alt='Default' class='weather-icon'>";
+    }
+    return icon;
 }
 
+// Function to handle category filtering
+async function filterByCategory(category) {
+    try {
+        // Construct the API URL based on the selected category
+        let apiUrl = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`;
+
+        // Fetch and display news based on the selected category
+        await fetchAndDisplayNews(apiUrl, category);
+    } catch (error) {
+        // Handle errors
+        console.error("ERROR", error);
+        newsContainer.innerHTML = "<p>ERROR</p>";
+    }
+}
 // Attach click event listeners to category buttons
 const categoryButtons = document.querySelectorAll('.category-button');
 categoryButtons.forEach(button => {
@@ -178,8 +380,40 @@ if (navigator.geolocation) {
     weatherInfoContainer.innerHTML = "<p>Geolocation is not supported by your browser.</p>";
 }
 
+function applyDateRangeFilter(startDate, endDate) {
+    const locationFilterValue = document.querySelector("custom-select");
+    const topicFilterValue = document.querySelector("topic-select");
+
+    let apiUrl = `https://newsapi.org/v2/everything?q=bitcoin&from=${startDate}&to=${endDate}&sortBy=publishedAt&apiKey=${apiKey}`;
+
+    // Append location filter to API URL if selected
+    if (locationFilterValue) {
+        apiUrl += `&q=${locationFilterValue}`;
+    }
+
+    // Append topic filter to API URL if selected
+    if (topicFilterValue) {
+        apiUrl += `&category=${topicFilterValue}`;
+    }
+
+    // Fetch and display news based on filters
+    fetchAndDisplayNews(apiUrl, topicFilterValue);
+}
+// Initialize Flatpickr for the date range picker
+const dateRangeInput = document.getElementById("date-range");
+flatpickr(dateRangeInput, {
+    mode: "range",
+    dateFormat: "Y-m-d",
+    onClose: function (selectedDates, dateStr, instance) {
+        if (selectedDates.length === 2) {
+            const startDate = selectedDates[0].toISOString().split('T')[0];
+            const endDate = selectedDates[1].toISOString().split('T')[0];
+            applyDateRangeFilter(startDate, endDate);
+        }
+    }
+});
+
 // Initial fetch of news when the page loads
 document.addEventListener('DOMContentLoaded', function () {
     fetchAndDisplayNews("https://newsapi.org/v2/top-headlines?country=us&apiKey=4c1a01c57bb24da786855cca3bd3cb1c", "general");
 });
-
