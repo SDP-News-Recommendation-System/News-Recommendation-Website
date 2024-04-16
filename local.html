@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <link rel="stylesheet" href="style/style.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body> 
+    <header>
+        <div class="header">
+            <div class="top">
+                <ul>
+                    <img class="logo" src="images/N.JPG" alt="Logo">
+                    <li><a href="local.html">Ana Səhifə</a></li> 
+                    <li><a href="haqqimizda.html" target="_blank">Haqqımızda</a></li>
+                    <li><a href="elaqe.html" target="_blank">Bizimlə Əlaqə </a></li>
+                   <li>
+                    <div class="lang-menu">
+                        <div class="selectedLang">AZE </div>
+                        <ul>
+                            <li><a href="index.html" class="eng">ENG</a></li>
+                    </ul>
+            </div>
+        </li>
+        <li>
+            <div class="head">
+                <form id="search-form" class="search" action="">
+                    <div class="search-container">
+                        <input id="search-input" type="text" placeholder=" Axtar...">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>   
+            </li>
+        </ul>
+    </div>
+</header>
+
+    <nav id="desktop-nav">
+   
+        <div class="logo"><img src="images/INN.png" alt="News Icon"></div>
+        <nav>
+            <div class="news-filter">
+                <select id="source-filter">
+                    <option value="">Xəbərləri çeşidlə</option>
+                    <option value="apa.az">apa.az</option>
+                    <option value="modern.az">modern.az</option>
+                    <option value="moderator.az">moderator.az</option>
+                    <option value="sumqayitxeber.com">sumqayitxeber.com</option>
+                </select>
+                <div class="weather-widget">
+                <div id="weather-info"></div>
+            </div>                
+            </div>
+           
+        </nav>  
+    </nav>
+   
+    <nav>
+        <div class="filter">  
+            <div class="category-buttons">
+                <button type="button" class="category-button" value="Dünya"><img src="images/dunya.jpg" alt="Dünya">
+                    <span class="button-text">Dünya</span></button>
+                <button type="button" class="category-button" value="Mədəniyyət"><img src="images/medeniyyet.jpg" alt="Mədəniyyət">
+                    <span class="button-text">Mədəniyyət</span></button>
+                <button type="button" class="category-button" value="Sənaye"><img src="images/senaye.jpg" alt="Sənaye">
+                    <span class="button-text">Sənaye</span></button>
+                <button type="button" class="category-button" value="İdman"><img src="images/idman.jpg" alt="İdman">
+                    <span class="button-text">İdman</span></button>
+                
+             </div>
+        </div>
+    </nav>
+
+        <div class="date-range-widget">
+            <input type="text" id="date-range" placeholder="Tarix Aralığı Seçin">
+        </div>
+
+
+
+<div class="container" id="newsContainer"></div>
+<div class="loading" id="loadingMessage">Loading...</div>
+
+
+<!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+
+<div class="center-image">
+    <img src="images/INN.png"></div>
+<footer>
+<div class="footer">
+<div class="row">
+<a href="#"><i class="fa fa-facebook"></i></a>
+<a href="#"><i class="fa fa-instagram"></i></a>
+<a href="#"><i class="fa fa-twitter"></i></a>
+</div>
+
+<div class="row">
+<ul>
+<li><a href="#">Əlaqə</a></li>
+<li><a href="#">Dəstək xidməti</a></li>
+<li><a href="#">Gizlilik</a></li>
+</ul>
+</div>
+
+<div class="row">© Son Xəbərlər - Müəllif hüquqları qorunur.</div>
+</div>
+</footer>
+<!-- Flatpickr JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="script/script2.js"></script>
+</body>
+</html>
