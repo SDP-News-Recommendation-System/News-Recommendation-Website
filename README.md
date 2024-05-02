@@ -53,7 +53,7 @@ To run the website locally:
 
 ## Web Scraping for Azerbaijani News
 
-The `news_scraper.py` script utilizes web scraping techniques to extract news articles from the following Azerbaijani news websites:
+The `main.py` in scraper folder utilizes web scraping techniques to extract news articles from the following Azerbaijani news websites:
 - [apa.az](https://apa.az)
 - [modern.az](https://modern.az)
 - [moderator.az](https://moderator.az)
