@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News+</title>
+    <link rel="stylesheet" href="style/s.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="top">
+                <ul>
+                    <img class="logo" src="images/N.JPG" alt="Logo">
+                    <li><a href="index.html">Home</a></li> <!-- Added Home Page Button -->
+                    <li><a href="aboutus.html">About Us</a></li>
+                    <li><a href="contactus.html">Contact Us</a></li>
+                    <li>
+                        <div class="lang-menu">
+                            <div class="selectedLang">ENG</div>
+                            <ul>
+                                <li><a href="local.html" class="az">AZE</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="head">
+                            <form id="search-form" class="search" action="">
+                                <div class="search-container">
+                                    <input id="search-input" type="text" placeholder=" Search NEWS+">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>                    
+                    </li> 
+                </ul>
+            </div>
+        </div>
+    </header>
+    <header class="main-header">
+        <div class="custom-select">
+                <button
+                  class="select-button"
+                  role="combobox"
+                  aria-labelledby="select button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="select-dropdown"
+                >
+                  <span class="selected-value">Choose Location</span>
+                  <span class="arrow"></span>
+                </button>
+                <ul class="select-dropdown" role="listbox" id="select-dropdown">
+                  <li role="option">
+                    <input type="radio" id="New York" name="location" />
+                    <label for="New York">New York</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="china" name="location" />
+                    <label for="china">China</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="brazil" name="location" />
+                    <label for="brazil">Brazil</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="qatar" name="location" />
+                    <label for="qatar">Qatar</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="russia" name="location" />
+                  <label for="russia">Russia</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="greece" name="location" />
+                    <label for="greece">Greece</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="turkey" name="location" />
+                    <label for="turkey">Turkey</label>
+                  </li>
+                  <li role="option">
+                    <input type="radio" id="japan" name="location" />
+                    <label for="japan">Japan</label>
+                  </li>
+                </ul>
+              </div>
+              <div class="topic-select">
+                <button
+                    class="sel-button"
+                    role="combobox"
+                    aria-labelledby="sel button"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="topic-dropdown"
+                >
+                    <span class="sel-value">Choose Topic</span>
+                    <span class="arrow"></span>
+                </button>
+                <!-- Topic Dropdown Options -->
+                <ul class="select-dropdown" role="listbox" id="topic-dropdown">
+                    <li role="option">
+                        <input type="radio" id="Health" name="topic" />
+                        <label for="Health">Health</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Education" name="topic" />
+                        <label for="Education">Education</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Science" name="topic" />
+                        <label for="Science">Science</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Lifestyle" name="topic" />
+                        <label for="Lifestyle">Lifestyle</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Fitness" name="topic" />
+                        <label for="Fitness">Fitness</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Food" name="topic" />
+                        <label for="Food">Food</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Sleep" name="topic" />
+                        <label for="Sleep">Sleep</label>
+                    </li>
+                    <li role="option">
+                        <input type="radio" id="Lifestyle" name="topic" />
+                        <label for="Lifestyle">Lifestyle</label>
+                    </li>
+                </ul>
+            </div>
+              <div class="date-range-widget">
+                <input type="text" id="date-range" value="Select Date Range">
+            </div> 
+                   
+</header>
+    <nav id="desktop-nav">
+            <div class="menu-icon" onclick="toggleSidebar()">≡</div>
+            
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <span></span>
+                    <button class="close-btn" onclick="toggleSidebar()">×</button>
+                </div>
+                <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="submenu">
+                        <a href="#" onclick="filterSidebar('health')">Health</a>
+                        <ul>
+                            <li><a href="#" onclick="filterSidebar('fitness')">Fitness</a></li>
+                            <li><a href="#" onclick="filterSidebar('food')">Food</a></li>
+                            <li><a href="#" onclick="filterSidebar('sleep')">Sleep</a></li>
+                            <li><a href="#" onclick="filterSidebar('mindfulness')">Mindfulness</a></li>
+                            <li><a href="#" onclick="filterSidebar('relationships')">Relationships</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#" onclick="filterSidebar('style')">Style</a>
+                        <ul>
+                            <li><a href="#" onclick="filterSidebar('art')">Art</a></li>
+                            <li><a href="#" onclick="filterSidebar('design')">Design</a></li>
+                            <li><a href="#" onclick="filterSidebar('fashion')">Fashion</a></li>
+                            <li><a href="#" onclick="filterSidebar('architecture')">Architecture</a></li>
+                            <li><a href="#" onclick="filterSidebar('luxury')">Luxury</a></li>
+                            <li><a href="#" onclick="filterSidebar('beauty')">Beauty</a></li>
+                        </ul>
+                    </li>
+                    <li class="submenu">
+                        <a href="#" onclick="filterSidebar('entertainment')">Entertainment</a>
+                        <ul>
+                            <li><a href="#" onclick="filterSidebar('movies')">Movies</a></li>
+                            <li><a href="#" onclick="filterSidebar('television')">Television</a></li>
+                            <li><a href="#" onclick="filterSidebar('celebrity')">Celebrity</a></li>
+                        </ul>
+                    </li>
+                    <li> <a href="#" onclick="filterSidebar('economy')">Economy</a></li>
+                    <li class="submenu">
+                        <a href="#" onclick="filterSidebar('world')">World</a>
+                        <ul>
+                            <li><a href="#" onclick="filterSidebar('africa')">Africa</a></li>
+                            <li><a href="#" onclick="filterSidebar('asia')">Asia</a></li>
+                            <li><a href="#" onclick="filterSidebar('china')">China</a></li>
+                            <li><a href="#" onclick="filterSidebar('europe')">Europe</a></li>
+                            <li><a href="#" onclick="filterSidebar('india')">India</a></li>
+                            <li><a href="#" onclick="filterSidebar('united kingdom')">United Kingdom</a></li>
+                        </ul>
+                    </li>
+                
+                </ul>
+            </div>
+            <div class="logo"><img src="images/INN.png"></div>
+        <div class="weather-widget">
+            <div id="weather-info"></div>
+        </div>
+    </nav>
+    
+    <nav>
+        <div class="filter">  
+            <div class="category-buttons">
+                <button type="button" class="category-button" value="business"><img src="images/business_icon.jpg" alt="Business">
+                    <span class="button-text">Business</span></button>
+                <button type="button" class="category-button" value="entertainment"><img src="images/entertainment_icon.jpg" alt="Entertainment">
+                    <span class="button-text">Entertainment</span></button>
+                <button type="button" class="category-button" value="technology"><img src="images/technology_icon.webp" alt="Technology">
+                    <span class="button-text">Technology</span></button>
+                <button type="button" class="category-button" value="sports"><img src="images/sports_icon.jpg" alt="Sports">
+                    <span class="button-text">Sports</span></button>
+                
+             </div>
+        </div>
+        
+    </nav>
+    <div class="container" id="newsContainer"></div>
+    
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+    
+    <div class="center-image">
+        <img src="images/INN.png"></div>
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="row">
+                <ul>
+                    <li><a href="contactus.html">Contact us</a></li>
+                    <li>
+                        <form id="search-form" class="search" action="">
+                        <div class="search-container">
+                            <input id="search-input" type="text" placeholder=" Search NEWS+">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </li>
+                <li><a href="#">Subscription</a></li>
+                </ul>
+            </div>
+            <div class="row">Copyright © 2024 NEWS+ - All rights reserved</div>
+        </div>
+    </footer>
+
+    <!-- Flatpickr JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script/script.js"></script>
+</body>
+</html>

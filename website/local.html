@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body> 
+    <header>
+        <div class="header">
+            <div class="top">
+                <ul>
+                    <img class="logo" src="images/N.JPG" alt="Logo">
+                    <li><a href="local.html">Ana Səhifə</a></li> <!-- Added Home Page Button -->
+                    <li><a href="haqqimizda.html">Haqqımızda</a></li>
+                    <li><a href="elaqe.html">Bizimlə Əlaqə </a></li>
+                   <li>
+                    <div class="lang-menu">
+                        <div class="selectedLang">AZE </div>
+                        <ul>
+                            <li><a href="index.html" class="eng">ENG</a></li>
+                    </ul>
+            </div>
+        </li>
+        <li>
+            <div class="head">
+                <form id="search-form" class="search" action="">
+                    <div class="search-container">
+                        <input id="search-input" type="text" placeholder=" Axtar...">
+                        <button id="search-button" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>   
+            </li>
+        </ul>
+    </div>
+</header>
+<header class="main-header">
+    <div class="custom-select">
+            <button
+              class="select-button"
+              role="combobox"
+              aria-labelledby="select button"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+              aria-controls="select-dropdown"
+            >
+              <span class="selected-value">Xəbərləri çeşidlə</span>
+              <span class="arrow"></span>
+            </button>
+            <ul class="select-dropdown" role="listbox" id="select-dropdown">
+                <li role="option">
+                    <input type="radio" id="apa.az" name="location" onchange="fetchNewsByLocation(this.id)" />
+                    <label for="apa.az">apa.az</label>
+                </li>
+                <li role="option">
+                    <input type="radio" id="modern.az" name="location" onchange="fetchNewsByLocation(this.id)" />
+                    <label for="modern.az">modern.az</label>
+                </li>                
+                <li role="option">
+                    <input type="radio" id="moderator.az" name="location" onchange="fetchNewsByLocation(this.id)" />
+                    <label for="moderator.az">moderator.az</label>
+                </li>
+                <li role="option">
+                    <input type="radio" id="sumqayitxeber.az" name="location" onchange="fetchNewsByLocation(this.id)" />
+                    <label for="sumqayitxeber.az">sumqayitxeber.az</label>
+                </li>
+                
+            </ul>
+          </div>
+          
+          <div class="date-range-widget">
+            <input type="text" id="date-range" value="Select Date Range">
+        </div>
+</header>
+    <nav id="desktop-nav">
+        
+            <div class="menu-icon" onclick="toggleSidebar()">≡</div>
+            
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <span></span>
+                    <button class="close-btn" onclick="toggleSidebar()">×</button>
+                </div>
+                <ul class="menu">
+                    <li><a href="local.html">Ana Səhifə</a></li>
+                    <li class="submenu">
+                        <a href="#" onclick="filterSidebar('Mənbə')">Mənbə</a>
+                        <ul>
+                            <li><a href="#" onclick="filterSidebar('apa.az')">apa.az</a></li>
+                            <li><a href="#" onclick="filterSidebar('modern.az')">modern.az</a></li>
+                            <li><a href="#" onclick="filterSidebar('moderator.az')">moderator.az</a></li>
+                            <li><a href="#" onclick="filterSidebar('sumqayitxeber.az')">sumqayitxeber.az</a></li>
+                        </ul>
+                    </li>
+                </ul>               
+            </div> 
+            <div class="logo"><img src="images/INN.png" alt="News Icon"></div>
+        
+            <div class="weather-widget">
+            <div id="weather-info"></div>
+        </div> 
+        </nav>  
+   
+    <nav>
+        <div class="filter">  
+            <div class="category-buttons">
+                <button type="button" class="category-button" value="Dünya"><img src="images/dunya.jpg" alt="Dünya">
+                    <span class="button-text">Dünya</span></button>
+                <button type="button" class="category-button" value="Mədəniyyət"><img src="images/medeniyyet.jpg" alt="Mədəniyyət">
+                    <span class="button-text">Mədəniyyət</span></button>
+                <button type="button" class="category-button" value="Sənaye"><img src="images/senaye.jpg" alt="Sənaye">
+                    <span class="button-text">Sənaye</span></button>
+                <button type="button" class="category-button" value="İdman"><img src="images/idman.jpg" alt="İdman">
+                    <span class="button-text">İdman</span></button>
+                
+             </div>
+        </div>
+    </nav>
+
+<div id="breakingNewsContainer"></div>
+<div class="container" id="newsContainer" style="display: none;"></div>
+<div class="loading" id="loadingMessage">Loading...</div>
+
+
+<!--FONT AWESOME-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--GOOGLE FONTS-->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+
+<div class="center-image">
+    <img src="images/INN.png"></div>
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="row">
+                <ul>
+                    <li><a href="contactus.html">Bizimlə Əlaqə</a></li>
+                    <li>
+                        <form id="search-form" class="search" action="">
+                        <div class="search-container">
+                            <input id="search-input" type="text" placeholder=" Axtar... ">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </li>
+                <li><a href="#">Abunə Ol</a></li>
+                </ul>
+            </div>
+            <div class="row">© 2024 NEWS+ - Müəllif hüquqları qorunur</div>
+        </div>
+    </footer>
+<!-- Flatpickr JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="script2.js"></script>
+</body>
+</html>

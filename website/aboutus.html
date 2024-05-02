@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: 10px 0px;
+    background: #000000;
+    font-family: 'Play', sans-serif;
+    text-align: left;
+    position: relative;
+}
+
+.header img.logo {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 50px;
+    height: auto;
+}
+
+.header::after {
+    content: '';
+    display: block;
+    width: 100%;
+}
+
+.header .top {
+    padding: 0.1% 0%;
+    width: 100%;
+    color: rgb(3, 4, 58);
+    font-size: 1em;
+}
+
+.header .top a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+
+.header .top a:hover {
+    color: #7274ff;
+}
+
+.header .top ul li {
+    display: inline-block;
+    margin: 0px 50px;
+    padding-left: 60px;
+}
+
+.container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.about-us {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+    background-color: #160287;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.background-image {
+    background-image: url('images/business_icon.jpg');
+    background-size: 100%;
+    background-position: center;
+    width: 100%;
+    opacity: 0.9;
+    height: 50vh;
+    position: relative;
+    z-index: -1;
+}
+
+.background-image:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.9) 100%);
+}
+
+.overlayy h1, h2 {
+    padding-top: 30px;
+    text-align: left;
+    font-size: 80px;
+    margin: 0;
+    padding-left: 60px;
+    color: rgba(255, 115, 0, 0.7);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.ambition {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #6b6b6b;
+    font-size: 15px;
+    margin: 100px auto;
+    max-width: 800px;
+    transition: 0.5s;
+}
+
+.ambition:hover {
+    color: #160287;
+}
+
+.participants {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.participant img {
+    width: 100%;
+    height:100%;
+    cursor: pointer;
+    transition: filter 0.5s, transform 0.5s; /* Added transition for smooth effect */
+
+}
+.participant {
+    margin: 10px;
+    overflow: hidden;
+    width: 250px;
+    height: 300px;
+    position: relative;
+    padding: 0 40px;
+    padding-bottom: 200px;
+}
+
+
+.participant:hover img {
+    filter: grayscale(100%); /* Apply grayscale initially */
+    transform: scale(1.1); /* Scale up the image on hover */
+
+}
+.participant-info {
+    background-color: #eceef6;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    
+
+}
+
+.participant:hover .participant-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.participant-info h3 {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 18px;
+    margin-top: 0;
+    padding: 10px;
+}
+
+.participant-info p {
+    color: #000000;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.center-image img {
+    mix-blend-mode: multiply;
+    width: 20%;
+    height: 20%;
+}
+
+.footer {
+    background-color: #000000;
+    padding: 100px 0;
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="top">
+            <ul>
+                <img class="logo" src="images/N.JPG" alt="Logo">
+                <li><a href="index.html">Back to Home</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+                <li><a href="haqqimizda.html">ENG</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="about-us">About Us</div>
+    <div class= "background-image">
+        <div class="overlayy">
+            <h1>WELCOME TO</h1>
+            <h2>NEWS+</h2>
+        </div>
+    </div>
+    <div class="ambition">Welcome to Personalized News Recommendation Website. At  NEWS+ , our mission is to deliver accurate, reliable, and timely news coverage that empowers and informs our readers. We believe in the fundamental importance of a free press in fostering transparency, accountability, and democracy.</div>
+
+    <div class="participants">
+        <div class="participant">
+            <img src="images/seva.jpeg" alt="Participant 1">
+            <div class="participant-info">
+                <h3>Sevinj Mammadova</h3>
+                <p>She has been instrumental in crafting the design elements of this website. With her expertise and creativity, she meticulously conceptualized and implemented the layout, visual aesthetics, and user interface, ensuring a seamless and engaging experience for visitors. Her dedication and proficiency in design have significantly contributed to the website's aesthetic appeal and user-friendly navigation.Furthermore, she dedicated efforts to enhance user experience by optimizing the design for responsiveness across various devices, contributing to the creation of a user-friendly news website.</p>
+            </div>
+        </div>
+        
+        <div class="participant">
+            <img src="images/ulva.jpeg" alt="Participant 2">
+            <div class="participant-info">
+                <h3>Ulviyya Mammadova</h3>
+                <p>Ulviyya Mammadova played a pivotal role in developing the script and API infrastructure of this website. Her expertise in scripting languages and API integration ensured the seamless functionality of the platform. With meticulous attention to detail and innovative problem-solving skills, she contributed significantly to the technical backbone of our project.</p>
+            </div>
+        </div>
+
+        <div class="participant">
+            <img src="images/china.jpeg" alt="Participant 3">
+            <div class="participant-info">
+                <h3>Chinara Niftaliyeva</h3>
+                <p>Chinara played a crucial role in establishing the connections between English and Azerbaijani page while collecting information about other websites, which greatly contributed to the project's success. She was responsible for building the JSON structure for the Azerbaijan page. She organized and formatted the data to ensure it accurately represents the content and information needed for the page.</p>
+            </div>
+        </div>
+
+        <div class="participant">
+            <img src="images/nergiz.jpeg" alt="Participant 4">
+            <div class="participant-info">
+                <h3>Nargiz Abdullayeva</h3>
+                <p>Nargiz played a vital role in ensuring the website's content remained current and relevant by conducting thorough literature reviews and providing regular updates on weekly changes. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-boxes">
+        <div class="box1">
+            <h3>Who We Are</h3>
+            <p>We are a dedicated team passionate about delivering accurate and reliable news to our readers.</p>
+        </div>
+        <div class="box2">
+            <h3>Our Mission</h3>
+            <p>Our mission is to provide timely news coverage that empowers and informs our audience.</p>
+        </div>
+        <div class="box3">
+            <h3>Our Vision</h3>
+            <p>Our vision is to become a leading platform for personalized news recommendations worldwide.</p>
+        </div>
+    </div>
+    <div class="center-image">
+        <img src="images/INN.png"></div>
+
+<div class="footer">
+</div>
+<script>
+document.querySelectorAll('.participant').forEach(item => {
+  item.addEventListener('click', event => {
+    item.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>

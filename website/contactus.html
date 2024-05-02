@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    padding: 10px 0px;
+    background: #000000;
+    font-family: 'Play', sans-serif;
+    text-align: left;
+    position: relative;
+}
+
+.header img.logo {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 50px;
+    height: auto;
+}
+
+.header::after {
+    content: '';
+    display: block;
+    width: 100%;
+}
+
+.header .top {
+    padding: 0.1% 0%;
+    width: 100%;
+    color: rgb(3, 4, 58);
+    font-size: 1em;
+}
+
+.header .top a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+
+.header .top a:hover {
+    color: #7274ff;
+}
+
+.header .top ul li {
+    display: inline-block;
+    margin: 0px 50px;
+    padding-left: 60px;
+}
+
+.container {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.contact-us {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 5px;
+    background-color: #160287;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.containerr {
+	width: 850px;
+	margin: 100px auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-style:normal;
+	line-height: 1;
+   /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+
+}
+
+.text-center {
+    padding: 30px;
+    color: #484848;
+	text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.col-1 {
+    display: flex;
+}
+
+.col-2 {
+	flex: 1 1 auto;
+	background-color: rgb(159, 159, 164);
+}
+
+.form-container {
+    text-align: center;
+	color: #000000;
+	padding: 30px;
+}
+
+.contact-info-title {
+	color: #00d3ee;
+    margin: 20px 0;
+}
+
+.form-row {
+	padding-bottom: 10px;
+}
+
+.form-field {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    height: 30px;
+	width: 100%;
+	border: none;
+    outline: none; /* Remove outline */
+	border-bottom: 1px solid #ffffff;
+}
+
+.send{
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 10px;
+	border: 0px;
+	padding: 12px 26px;
+	background-color: #2454fe;
+	color: rgb(255, 255, 255);
+}
+.map-container {
+    margin: 20px 50px;
+    width: 100%;
+    height: 400px;
+}
+@media only screen and (max-width: 768px) {
+            .container {
+                max-width: 100%; /* Set max-width to full width */
+            }
+
+            .content {
+                flex-direction: column; /* Change flex-direction for smaller screens */
+            }
+
+            .col-1, .col-2 {
+                width: 100%; /* Make both columns full width */
+            }
+            .map-container{
+                width: 100%;
+                height: 200px;   
+           }
+        }
+
+
+.center-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-image img {
+    mix-blend-mode: multiply;
+    width: 20%;
+    height: 20%;
+}
+
+.footer {
+    background-color: #000000;
+    padding: 100px 0;
+}
+</style>
+</head>
+<body>
+<header>
+    <div class="header">
+        <div class="top">
+            <ul>
+                <img class="logo" src="images/N.JPG" alt="Logo">
+                <li><a href="index.html">Back to Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="elaqe.html">ENG</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="contact-us">Contact Us</div>
+    
+		<div class="text-center">
+			<p>We would love to hear from you. Please fill out the form below, and we will get back to you as soon as
+                possible.</p>
+		</div>
+		<div class="containerr">
+			<div class="col-2">
+				<form>
+					<div class="form-container">
+						<h2>Send Message</h2>
+						<div class="form-row">
+                            <div>
+                                <input type="text" class="form-field" placeholder="Full Name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div>
+                                <input type="text" class="form-field" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <textarea name="message" class="form-field" placeholder="Your Message"></textarea>
+                            <button type="submit" class="send">Send</button>
+                        </div>    
+				</form>
+			</div>
+    </div>
+            <div class="content">
+                <div class="col-1">
+                    <div class="address">
+                        <div class="contact-info-title">Address:</div>
+                        <p> Aghaoglu str. 61, Baku, 1008</p>
+                        <div class="contact-info-title">Phone:</div>
+                        <p>+994(99)-339-xx-xx</p>
+                        <div class="contact-info-title">Email:</div>
+                        <p>smammadova4617@ada.edu.az</p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d44850.47245373172!2d49.8174781984547!3d40.38886389803846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x40307d6ee857fa47%3A0x67993e393222e8e2!2sAhmadbey%20Aghaoglu%20str.%2061%20Baku%2C%201008!3m2!1d40.394599!2d49.84938!5e0!3m2!1saz!2saz!4v1712415909748!5m2!1saz!2saz" width="630" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                </div>
+            </div>
+		</div>
+    <div class="center-image">
+        <img src="images/INN.png"></div>
+
+<footer><div class="footer"></div></footer>
+</body>
+</html>
+    
